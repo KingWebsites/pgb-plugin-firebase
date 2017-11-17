@@ -55,8 +55,9 @@ var PLATFORM = {
 // Copy key files to their platform specific folders
 if (directoryExists(IOS_DIR)) {
     copyKey(PLATFORM.IOS);
-} else if (directoryExists(ANDROID_DIR)) {
-    copyKey(PLATFORM.ANDROID, updateStringsXml)
+}
+if (directoryExists(ANDROID_DIR)) {
+    copyKey(PLATFORM.ANDROID)
 }
 
 function updateStringsXml(contents) {
