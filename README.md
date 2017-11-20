@@ -1,24 +1,19 @@
 # cordova-plugin-firebase
 This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project!
 Android and iOS supported.
+Build for Phonegap
 
-Donations are welcome and will go towards further development of this project. Use the wallet address below to donate.
-
-BTC: 1JuXhHMCPHXT2fDfSRUTef9TpE2D67sc9f
-
-Thank you for your support!
+Fork by Pliciweb Solutions - http://www.pliciweb.com
 
 ## Installation
-See npm package for versions - https://www.npmjs.com/package/cordova-plugin-firebase
-
 Install the plugin by adding it your project's config.xml:
 ```
-<plugin name="cordova-plugin-firebase" spec="0.1.24" />
+<plugin name="cordova-plugin-firebase" spec="https://github.com/Pliciweb/cordova-plugin-firebase.git">
+    <variable name="APP_GOOGLE_API_ID" value="YOUR_GOOGLE_FIREBASE_ID" />
+    <variable name="APP_GOOGLE_API_KEY" value="YOUR_GOOGLE_FIREBASE_KEY" />
+</plugin>
 ```
-or by running:
-```
-cordova plugin add cordova-plugin-firebase@0.1.24 --save
-```
+
 Download your Firebase configuration files, GoogleService-Info.plist for ios and google-services.json for android, and place them in the root folder of your cordova project:
 
 ```
@@ -26,9 +21,9 @@ Download your Firebase configuration files, GoogleService-Info.plist for ios and
     platforms/
     plugins/
     www/
+       google-services.json       <--
+       GoogleService-Info.plist   <--
     config.xml
-    google-services.json       <--
-    GoogleService-Info.plist   <--
     ...
 ```
 
@@ -91,7 +86,16 @@ On Android Lollipop and above you can also set the accent color for the notifica
 
 ### Notes about PhoneGap Build
 
-Hooks does not work with PhoneGap Build. This means you will have to manually make sure the configuration files are included. One way to do that is to make a private fork of this plugin and replace the placeholder config files (see src/ios and src/android) with your actual ones, as well as hard coding your app id and api key in plugin.xml.
+This plugin was forked in order to be used with Phonegap.
+you must add the Firebase files to your config.xml:
+```
+<platform name="android">
+    <resource-file src="google-services.json" target="google-services.json" />
+</platform>
+<platform name="ios">
+    <resource-file src="GoogleService-Info.plist" />
+</platform>
+```
 
 
 ## Methods
