@@ -10,6 +10,9 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 		<engine name="cordova" version=">=3.2.0" />
 	</engines>
 
+    <preference name="APP_GOOGLE_API_ID" />
+    <preference name="APP_GOOGLE_API_KEY" />
+
 	<platform name="android">
 		<js-module name="FirebasePlugin" src="www/firebase.js">
 			<clobbers target="FirebasePlugin" />
@@ -21,10 +24,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 			</feature>
 		</config-file>
 		<config-file parent="/resources" target="res/values/strings.xml">
-		    <string name="google_app_id">1:523216490096:android:751c34a799349477</string>
+		    <string name="google_app_id">$APP_GOOGLE_API_ID</string>
 		</config-file>
 		<config-file parent="/resources" target="res/values/strings.xml">
-		    <string name="google_api_key">AIzaSyDB7pSDwib2blDlvcaZW_AkNRdxKXX-HJQ</string>
+		    <string name="google_api_key">$APP_GOOGLE_API_KEY</string>
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/*">
 				<uses-permission android:name="android.permission.INTERNET" />
