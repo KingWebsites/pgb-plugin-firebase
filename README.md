@@ -1,30 +1,54 @@
-# cordova-plugin-firebase
+# PhoneGap Build Overrides for cordova-plugin-firebase
+
+1. Firebase / Console / Settings. Create an iOS and Android app. Nicknames should be client names.
+2. Add Firebase Web APi Key and App ID to your PhoneGap Build config.xml (see Installation section below)
+3. Download the google-services.json and GoogleService-Info.plist from Firebase and add to your PhoneGap Build project. I have put mine in a directory I called '/res/firebase/'.
+4. Add the resource-file links to your PhoneGap Build config.xml (see Installation section below)
+
+# cordova-plugin-firebase - 
 This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project!
 Android and iOS supported.
 Build for Phonegap
 
-Fork by Pliciweb Solutions - http://www.pliciweb.com
+Fork by KingWebsites from a 
+Fork by Pliciweb Solutions - http://www.pliciweb.com from the plugin created by 
+Arnesson: /arnesson/cordova-plugin-firebase
 
 ## Installation
 Install the plugin by adding it your project's config.xml:
 ```
-<plugin name="cordova-plugin-firebase" spec="https://github.com/Pliciweb/cordova-plugin-firebase.git">
+<plugin name="cordova-plugin-firebase" spec="https://github.com/KingWebsites/pgb-plugin-firebase.git">
+    <!-- This is the Android app's "API ID" in your Firebase Console. It should have 'android' in the middle -->
     <variable name="APP_GOOGLE_API_ID" value="YOUR_GOOGLE_FIREBASE_ID" />
+    <!-- This is the long "Web API Key" in your Firebase Console -->
     <variable name="APP_GOOGLE_API_KEY" value="YOUR_GOOGLE_FIREBASE_KEY" />
 </plugin>
 ```
 
-Download your Firebase configuration files, GoogleService-Info.plist for ios and google-services.json for android, and place them in the www folder of your cordova project:
+Download your Firebase configuration files, GoogleService-Info.plist for ios and google-services.json for android, and place them in a folder of your cordova project:
 
 ```
 - My Project/
     platforms/
     plugins/
     www/
-       google-services.json       <--
-       GoogleService-Info.plist   <--
+    res/
+        firebase/
+            google-services.json       <--
+            GoogleService-Info.plist   <--
     config.xml
     ...
+```
+
+Then you must reference these files in your config.xml
+
+```
+<platform name="android">
+    <resource-file src="res/firebase/google-services.json" target="google-services.json" />
+</platform>
+<platform name="ios">
+    <resource-file src="res/firebase/GoogleService-Info.plist" />
+</platform>
 ```
 
 See https://support.google.com/firebase/answer/7015592 for details how to download the files from firebase.
